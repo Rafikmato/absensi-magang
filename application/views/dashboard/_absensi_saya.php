@@ -68,18 +68,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select name="keterangan" id="" class="form-control">
-                                                <option value="">-- Pilih Keterangan --</option>
-                                                <option value="izin">Izin</option>
-                                                <option value="hadir">Hadir</option>
-                                                <option value="alpa">alpa</option>
-                                                <option value="terlambat">Terlambat</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button class="btn btn-dark" name="filter">Filter</button>
+                                        <button class="btn btn-success" name="filter">Filter</button>
                                     </div>
                                 </div>
                             </form>
@@ -123,11 +112,46 @@
                                         </td>
                                         <td><?= $rows->tgl ?></td>
                                         <td><?= $rows->keterangan?></td>
-                                        <td><a href="http://" class="btn btn-dark">Detail</a></td>
+                                        <td><a href="<?= base_url('detail-absensi/'.$rows->id_presensi) ?>" class="btn btn-info">Lihat</a></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
+                            <?php 
+                                if(isset($bulan) && isset($tahun))
+                                {
+                                    echo "<p>Jumlah Hari belum melakukan absensi : <strong>{$this->M_riwayat->not_absensi_me($bulan,$tahun)}</strong></p>";
+                                }
+
+                            ?>
+                            <?php 
+                                if(isset($bulan) && isset($tahun))
+                                {
+                                    echo "<p>Jumlah Alpa : <strong>{$this->M_riwayat->countDataMe($tahun,$bulan,'alpa')}</strong></p>";
+                                }
+
+                            ?>
+                            <?php 
+                                if(isset($bulan) && isset($tahun))
+                                {
+                                    echo "<p>Jumlah Hadir : <strong>{$this->M_riwayat->countDataMe($tahun,$bulan,'hadir')}</strong></p>";
+                                }
+
+                            ?>
+                            <?php 
+                                if(isset($bulan) && isset($tahun))
+                                {
+                                    echo "<p>Jumlah Sakit : <strong>{$this->M_riwayat->countDataMe($tahun,$bulan,'sakit')}</strong></p>";
+                                }
+
+                            ?>
+                            <?php 
+                                if(isset($bulan) && isset($tahun))
+                                {
+                                    echo "<p>Jumlah Izin : <strong>{$this->M_riwayat->countDataMe($tahun,$bulan,'izin')}</strong></p>";
+                                }
+
+                            ?>
                         </div>
                     </div>
                 </div>

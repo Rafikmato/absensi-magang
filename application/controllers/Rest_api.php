@@ -2,7 +2,6 @@
 define('UPLOAD_DIR', 'public/images/');
 
 class Rest_api extends CI_Controller {
-   
     public function chat()
     {
         $id = $this->session->userdata('id');
@@ -75,7 +74,7 @@ class Rest_api extends CI_Controller {
                 {
                     $response = [
                         'status' => 'error',
-                        'desc' => 'sudah alpa ! tidak dapat melakukan absensi keluar',
+                        'desc' => 'sudah alpa ! tidak dapat melakukan absensi pulang',
                     ];
                     echo json_encode($response);
                 }else if($data['keterangan'] == 'izin'){
@@ -89,7 +88,7 @@ class Rest_api extends CI_Controller {
                     {
                         $response = [
                             'status' => 'error',
-                            'desc' => 'anda belum bisa absensi keluar',
+                            'desc' => 'anda belum bisa absensi pulang',
                         ];
                         echo json_encode($response);
                     }else{
@@ -102,8 +101,8 @@ class Rest_api extends CI_Controller {
                         $waktu = Rest_api::waktu_now();
                         $this->db->query("UPDATE presensi SET gambar_out = '$name_file', jam_keluar = '$waktu' WHERE id_pegawai = '$id' AND tgl_presensi = '$now'");
                         $response = [
-                            'status' => 'alert',
-                            'desc' => 'absensi keluar berhasil!',
+                            'status' => 'Info',
+                            'desc' => 'absensi pulang berhasil!',
                             'nama_gbr' => $name_file 
                         ];
                         echo json_encode($response);
@@ -119,7 +118,7 @@ class Rest_api extends CI_Controller {
         }else{
             $response = [
                 'status' => 'error',
-                'desc' => 'anda belum melakukan absensi masuk'
+                'desc' => 'anda belum melakukan absensi datang'
             ];
             echo json_encode($response);
         }
@@ -137,35 +136,24 @@ class Rest_api extends CI_Controller {
         $ketentuan = $this->db->get('ketentuan')->row_array();
         $query = $this->db->query("SELECT jam_masuk,jam_keluar,id_presensi,DATE_FORMAT(tgl_presensi,'%d %m %y') AS tl FROM presensi WHERE id_pegawai = '$id' AND tgl_presensi = '$now'");
         $data_query = $query->row_array();
-        if($query->num_rows() > 0)
+        $today = date('l');
+        if($today == 'Sunday' || $today == 'Saturday')
         {
             $response = [
                 'status' => 'error',
-                'desc' => 'anda telah melakukan absensi masuk'
+                'desc' => 'Tidak dapat melakukan absensi pada hari sabtu dan minggu'
             ];
             echo json_encode($response);
         }else{
-            if(Rest_api::waktu_now() > $ketentuan['ketentuan_alpa'])
+            if($query->num_rows() > 0)
             {
-                $name_file = uniqid() . '.png';
-                file_put_contents(UPLOAD_DIR.$name_file, $data);
-                $token = [
-                    'id_pegawai' => $this->input->post("id_karyawan"),
-                    'latidude' => $this->input->post('latitude'),
-                    'longitude' => $this->input->post('longitude'),
-                    'gambar_in' => $name_file,
-                    'jam_masuk' => Rest_api::waktu_now(),
-                    'tgl_presensi' => $now,
-                    'keterangan' => 'alpa',
-                ];
-                $this->db->insert('presensi',$token);
                 $response = [
                     'status' => 'error',
-                    'desc' => 'anda telah alpa'
+                    'desc' => 'anda telah melakukan absensi datang'
                 ];
                 echo json_encode($response);
             }else{
-                if(Rest_api::waktu_now() > $ketentuan['ketentuan_terlambat'])
+                if(Rest_api::waktu_now() > $ketentuan['ketentuan_alpa'])
                 {
                     $name_file = uniqid() . '.png';
                     file_put_contents(UPLOAD_DIR.$name_file, $data);
@@ -176,23 +164,17 @@ class Rest_api extends CI_Controller {
                         'gambar_in' => $name_file,
                         'jam_masuk' => Rest_api::waktu_now(),
                         'tgl_presensi' => $now,
-                        'keterangan' => 'terlambat',
+                        'keterangan' => 'alpa',
                     ];
                     $this->db->insert('presensi',$token);
                     $response = [
-                        'status' => 'alert',
-                        'desc' => 'anda telah berhasil melakukan absensi, tetapi terlambat',
+                        'status' => 'error',
+                        'desc' => 'anda telah alpa'
                     ];
                     echo json_encode($response);
                 }else{
-                    if(Rest_api::waktu_now() < $ketentuan['jam_masuk'])
+                    if(Rest_api::waktu_now() > $ketentuan['ketentuan_terlambat'])
                     {
-                        $response = [
-                            'status' => 'error',
-                            'desc' => "Maaf anda belum bisa melakukan absensi sebelum {$ketentuan['jam_masuk']}",
-                        ];
-                        echo json_encode($response);
-                    }else{
                         $name_file = uniqid() . '.png';
                         file_put_contents(UPLOAD_DIR.$name_file, $data);
                         $token = [
@@ -202,14 +184,41 @@ class Rest_api extends CI_Controller {
                             'gambar_in' => $name_file,
                             'jam_masuk' => Rest_api::waktu_now(),
                             'tgl_presensi' => $now,
-                            'keterangan' => 'hadir',
+                            'keterangan' => 'terlambat',
                         ];
                         $this->db->insert('presensi',$token);
                         $response = [
                             'status' => 'alert',
-                            'desc' => 'anda telah berhasil melakukan absensi tepat waktu',
+                            'desc' => 'anda telah berhasil melakukan absensi, tetapi terlambat',
                         ];
                         echo json_encode($response);
+                    }else{
+                        if(Rest_api::waktu_now() < $ketentuan['jam_masuk'])
+                        {
+                            $response = [
+                                'status' => 'error',
+                                'desc' => "Maaf anda belum bisa melakukan absensi sebelum {$ketentuan['jam_masuk']}",
+                            ];
+                            echo json_encode($response);
+                        }else{
+                            $name_file = uniqid() . '.png';
+                            file_put_contents(UPLOAD_DIR.$name_file, $data);
+                            $token = [
+                                'id_pegawai' => $this->input->post("id_karyawan"),
+                                'latidude' => $this->input->post('latitude'),
+                                'longitude' => $this->input->post('longitude'),
+                                'gambar_in' => $name_file,
+                                'jam_masuk' => Rest_api::waktu_now(),
+                                'tgl_presensi' => $now,
+                                'keterangan' => 'hadir',
+                            ];
+                            $this->db->insert('presensi',$token);
+                            $response = [
+                                'status' => 'alert',
+                                'desc' => 'anda telah berhasil melakukan absensi tepat waktu',
+                            ];
+                            echo json_encode($response);
+                        }
                     }
                 }
             }

@@ -8,10 +8,15 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_auth');
 	}
-
+    
 	public function index()
 	{
-		$this->load->view('v_login');
+        if($this->session->userdata('in') == 'login')
+        {
+            redirect('dashboard');
+        }else{
+            $this->load->view('v_login');
+        }
 	}
 
 	public function auth()

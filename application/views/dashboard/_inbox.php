@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php $this->load->view('layouts/Header',[
-        'judul' => 'Pesan'
+        'judul' => 'Riwayat Pesan'
     ]) ?>
     <style>
         video {
@@ -27,10 +27,10 @@
         <div id="layoutSidenav_content">            
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Pesan</h1>
+                    <h1 class="mt-4">Detail Pekerjaan</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Pesan</li>
+                        <li class="breadcrumb-item active">Detail Pekerjaan</li>
                     </ol>
                     <div class="card">
                         <div class="card-body">

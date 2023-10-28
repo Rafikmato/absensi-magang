@@ -26,68 +26,36 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
+                        <div class="row justify-content-between">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Jumlah Pegawai</div>
+                                    <div class="card-body"><h4>Jumlah Pegawai</h4></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="<?= base_url('daftar-karyawan') ?>">Lihat Detail</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <h2><?= $this->db->get("karyawan")->num_rows() ?></h2>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Jumlah Admin</div>
+                                    <div class="card-body"><h4>Jumlah Admin</h4></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="<?= base_url('daftar-admin') ?>">Lihat Detail</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <h2><?= $this->db->get("operator")->num_rows() ?></h2>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-4 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Laporan Absensi</div>
+                                    <div class="card-body"><h4>Laporan Absensi</h4></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="<?= base_url('laporan-absensi') ?>">Lihat Detail</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <h2><?= $this->db->get("presensi")->num_rows() ?></h2>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
                             </div>
                         </div>
                     </div>
@@ -102,47 +70,44 @@
                         <hr>
                         <div class="row mb-4">
                             <h6>Tanggal dan Waktu hari ini : <strong><?= date('Y-M-D') ?></strong></h6>
+                            <?= $this->session->flashdata('alert') ?>
                             <div class="col-md-6 mt-3">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                        <h4 class="card-text text-center">Hi, <strong><?php echo $this->session->userdata('user_name') ?></strong> Silahkan Absensi</h4>
+                                        <h4 class="card-text text-center">Hallo, <strong><?php echo $this->session->userdata('user_name') ?></strong> Silahkan Absensi</h4>
                                         <div class="text-center">
-                                            <button class="btn btn-dark mt-3 in" onclick="getPosition()"><i class="fa fa-sign-in"></i> Absensi Masuk</button>
-                                            <button class="btn btn-dark mt-3 in" onclick="getOut()">Absensi Keluar <i class="fa fa-sign-out"></i> </button>
+                                            <button class="btn btn-success mt-3 in" onclick="getPosition()"><i class="fa fa-sign-in"></i> Absensi Datang</button>
+                                            <button class="btn btn-danger mt-3 in" onclick="getOut()">Absensi Pulang <i class="fa fa-sign-out"></i> </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mt-3">
+                                <br>
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-text text-center"></strong>Ajukan Izin atau Sakit</h4>
-                                        <form action="" method="post">
+                                        <form action="<?= base_url('Absensi/Pengajuan') ?>" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <select name="" id="" class="form-control">
+                                                <input type="file" required name="berkas" class="form-control-file">
+                                            </div>
+                                            <small class="text-danger">* Masukan Bukti File Berupa PDF | PNG *</small>
+                                            <div class="form-group mt-3">
+                                                <select name="pengajuan" required class="form-control">
                                                     <option value="">-- Pilih Pengajuan --</option>
-                                                    <option value="izin">IZIN</option>
-                                                    <option value="sakit">SAKIT</option>
+                                                    <option value="izin">Izin</option>
+                                                    <option value="sakit">Sakit</option>
                                                 </select>
                                             </div>
-                                            <button class="btn btn-dark mt-3 w-100"><i class="fa fa-external-link-square"></i> ajukan</button>
+                                            <button name="send" class="btn btn-success mt-3 w-100"><i class="fa fa-external-link-square"></i> Ajukan</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row  mb-4">
-                            <div class="col-md-6 mt-3" hidden>
+                            <div class="col-md-6 mt-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="map" style="margin-right:auto;margin-left:auto;width: 400px; height: 400px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mt-3" hidden>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div id="my_camera">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="border-0" id="my_camera">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -225,17 +190,16 @@
             function showPosition(posisi)
             {  
                 try {
-                    
                     var image = '';
-                    var map = L.map('map').setView([posisi.coords.latitude,posisi.coords.longitude], 13);
-                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                        maxZoom: 18,
-                        id: 'mapbox/streets-v11',
-                        tileSize: 512,
-                        zoomOffset: -1,
-                        accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-                    }).addTo(map);
+                    // var map = L.map('map').setView([posisi.coords.latitude,posisi.coords.longitude], 13);
+                    // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                    //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    //     maxZoom: 18,
+                    //     id: 'mapbox/streets-v11',
+                    //     tileSize: 512,
+                    //     zoomOffset: -1,
+                    //     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+                    // }).addTo(map);
                     
                     Webcam.snap( function(data_uri) {
                         // display results in page
@@ -280,14 +244,16 @@
                     });
                 } catch (error) {
                     $.toast({
-                        heading: `Error`,
-                        text: `anda telah melakukan absensi/Laporan Masuk`,
+                        heading: `Maaf`,
+                        text: `Anda telah melakukan absensi/Laporan Masuk`,
                         showHideTransition: 'slide-right',
                         icon: 'info',
                         hideAfter: false,
                         position: 'top-right',
-                        bgColor: '#e44d26'
+                        bgColor: '#E9D502',
+                        textColor: '#000'
                     });
+                    console.log(error);
                 }
                 
             }

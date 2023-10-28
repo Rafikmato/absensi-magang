@@ -17,6 +17,9 @@ class M_auth extends CI_Model
                 $level = $rows->jabatan;
                 $jkel = $rows->jenis_kelamin;
                 $status = $rows->status;
+                $jabatan = $rows->jabatan;
+                $pass = $rows->password;
+                $id_jabatan = $rows->id_jabatan;
             }
             if($status > 0){
                 $token = array(
@@ -27,8 +30,12 @@ class M_auth extends CI_Model
                     'level' => $level,
                     'jenis_kelamin' => $jkel,
                     'status' => $status,
-                    'in' => 'login'
+                    'in' => 'login',
+                    'role' => $jabatan,
+                    'password' => $pass,
+                    'id_jabatan' => $id_jabatan
                 );
+                // 109563163573324009088
                 $this->session->set_userdata($token);
                 return redirect('/dashboard');
             }else{
@@ -51,13 +58,15 @@ class M_auth extends CI_Model
                 $username = $rows->username;
                 $role = $rows->role;
                 $profile = $rows->profile;
+                $pass = $rows->password;
             }
             $token = [
                 'id' => $id,
                 'user_name' => $username,
                 'role' => $role,
                 'profile' => $profile ,
-                'in' => 'login'
+                'in' => 'login',
+                'password' => $pass
             ];
             $this->session->set_userdata($token);
             return redirect('/dashboard');

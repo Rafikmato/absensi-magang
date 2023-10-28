@@ -12,10 +12,10 @@
         <div id="layoutSidenav_content">            
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Pesan</h1>
+                    <h1 class="mt-4">Riwayat Pekerjaan</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Pesan Masuk</li>
+                        <li class="breadcrumb-item active">Riwayat Pekerjaan</li>
                     </ol>
                     <div class="mt-2">
                         <?= $this->session->flashdata('alert') ?>
@@ -23,7 +23,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
-                            Pesan
+                            Riwayat Pekerjaan
                         </div>
                         <div class="card-body">
                             <table id="datatablesSimple">
@@ -31,9 +31,11 @@
                                     <tr>
                                         <th>No</th>
                                         <?php if($this->session->userdata('role') == 1 && 2){ ?>
+                                        <th>Nik</th>
                                         <th>Nama</th>
                                         <?php } ?>
-                                        <th>Detail</th>
+                                        <th>Jabatan</th>
+                                        <th>Detail Pekerjaan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,8 +43,10 @@
                                     <?php foreach($data as $rows){ ?>
                                     <tr>
                                         <td><?= $no+=1 ?></td>
+                                        <td><?= $rows->nik ?></td>
                                         <td><?= $rows->username ?></td>
-                                        <td><a href="<?= base_url('detail-message/'.$rows->id_karyawan) ?>" class="btn btn-dark">Detail</a></td>
+                                        <td><?= $rows->ket_jabatan ?></td>
+                                        <td><a href="<?= base_url('detail-message/'.$rows->id_karyawan) ?>" class="btn btn-info">Lihat</a></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

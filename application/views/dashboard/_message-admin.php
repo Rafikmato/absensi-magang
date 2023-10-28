@@ -27,10 +27,10 @@
         <div id="layoutSidenav_content">            
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Pesan</h1>
+                    <h1 class="mt-4">Riwayat Pesan</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Pesan</li>
+                        <li class="breadcrumb-item active">Riwayat Pesan</li>
                     </ol>
                     <div class="card">
                         <div class="card-body">
@@ -65,7 +65,7 @@
                     x
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body w-100">
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label" hidden>longitude</label>
                     <input type="text" class="form-control longitude" hidden>
@@ -136,8 +136,8 @@
                             var lo = ($(this).attr('data-lo'))
                             $('.longitude').val(lo);
                             $('.latitude').val(la);
-                            document.getElementById('maping').innerHTML = '<div id="map" style="margin-right:auto;margin-left:auto;width: 400px; height: 400px;"></div>'
-                            var map = L.map('map').setView([la,lo], 13);
+                            document.getElementById('maping').innerHTML = '<div id="map" style="position:relatife;width: 400px; height: 400px;"></div>'
+                            var map = L.map('map','mapbox.satellite').setView([la,lo], 13);
                             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                                 maxZoom: 18,
@@ -155,7 +155,6 @@
                         });
                         $('.del').on('click',function(){
                             var id = ($(this).attr('data-id'));
-                            alert(id);
                         });
                     }
                 });

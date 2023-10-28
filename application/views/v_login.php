@@ -8,25 +8,41 @@
     <link rel="icon" href="img/ung.png">
     <link rel="stylesheet" href="<?= base_url('public/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/bootstrap/css/bootstrap.css') ?>">
-    <title>LOGIN | SISTEM PRESENSI EMPLOYERS</title>
+    <link rel="shortcut icon" href="<?= base_url('public/logo/gto.png') ?>" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <title>LOGIN | ABSENSI MAHASISWA</title>
+    <style>
+        body{
+            font-family: 'Quicksand', sans-serif;
+            back
+        }
+    </style>
 </head>
 <body style="background-color: lightgray;">
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container mb-4">
+        <div class="row justify-content-center" style="margin-top: 30px;">
             <div class="col-md-5">
+                
                 <form  method="post" action="<?= base_url('Login/auth') ?>">
-                    <div class="card shadow bg-light" style="margin-top: 50px;">
+                    <div class="card shadow bg-light mt-4">
+                        <div class="text-center py-4">
+                            <img src="<?= base_url('public/logo/gto.png') ?>" alt="logo" width="90">
+                            <!-- <img src="<?= base_url('public/logo/logo.png') ?>" alt="logo" width="90"> -->
+                        </div>
                         <div class="card-body">
                             <?= $this->session->flashdata('alert'); ?>
-                            <h4 class=" text-center">SISTEM ABSENSI PEGAWAI</h4>
+                            <h5 class="text-center">ABSENSI MAHASISWA MAGANG</h5>
+                            <h5 class="text-center">RSUD Prof. H. dr. Aloei Saboe</h5>
                             <hr>
                             <div class="form-group">
                                 <label for="choose">
-                                    Hak Akses
+                                    Pengguna
                                 </label>
                                 <select name="role" class="form-control" id="" required>
-                                    <option value="">-- Pilih Hak Akses --</option>
-                                    <option value="1">Admin/Kepala Dinas</option>
+                                    <option value="">-- Pilih Pengguna --</option>
+                                    <option value="1">Administrator</option>
                                     <option value="2">Pegawai</option>
                                 </select>
                             </div>
@@ -36,11 +52,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" required id="password" name="password" class="form-control" placeholder="Enter Password">
+                                <input type="password" required id="password" name="password" class="form-control" placeholder="Enter Password">
                             </div>
-                            <button class="btn btn-dark text-light w-100">Masuk</button>
+                            <button class="btn btn-success text-light w-100">Masuk</button>
                             <br>
-                            <p class="mt-3">Belum Punya Account ? <a href="design-register-yuni.html">Daftar Disini</a></p>
+                            <!--<p class="mt-3">Belum Punya Account ? <a href="design-register-yuni.html">Daftar Disini</a></p>-->
                         </div>
                     </div>
                 </form>

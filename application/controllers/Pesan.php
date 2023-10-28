@@ -19,7 +19,7 @@ class Pesan extends CI_Controller {
 
     public function list_inbox()
     {
-        $query = $this->db->query("SELECT username,id_karyawan,nik FROM karyawan")->result();
+        $query = $this->db->query("SELECT * FROM karyawan INNER JOIN jabatan ON karyawan.id_jabatan = jabatan.id_jabatan")->result();
         return $this->load->view('dashboard/_pesan',[
             'data' => $query
         ]);
