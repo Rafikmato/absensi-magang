@@ -2,18 +2,18 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
+                <div class="sb-sidenav-menu-heading preker">Manajemen <br> Absensi Mahasiswa</div>
+                <hr>
                 <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
                 <a class="nav-link" href="<?= base_url('dashboard') ?>">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-                <a class="nav-link" href="<?= base_url('profile') ?>">
+                
+                <!-- <a class="nav-link" href="<?= base_url('profile') ?>">
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                     Data Diri
-                </a>
-    
-                <div class="sb-sidenav-menu-heading preker">Manajemen <br> Absensi Mahasiswa</div>
-                <hr>
+                </a> -->
                 <?php if($this->session->userdata('role') == 1 && 2){ ?>
                     <a class="nav-link" href="<?= base_url('laporan-absensi') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -59,10 +59,10 @@
                         Daftar Admin
                     </a>
                 <?php } ?>
-                    <a class="nav-link" href="<?= base_url('Login/log_out') ?>">
+                    <!-- <a class="nav-link" href="<?= base_url('Login/log_out') ?>">
                         <div class="sb-nav-link-icon"><i class="fa fa-sign-out"></i></div>
                         Logout
-                    </a>
+                    </a> -->
             </div>
         </div>
     </nav>

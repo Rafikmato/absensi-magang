@@ -25,8 +25,8 @@ class Absensi extends CI_Controller
                 return redirect('/dashboard');
             } else {
                 $today = date('l');
-                if ($today == 'Monday' || $today == 'Saturday') {
-                    $this->session->set_flashdata('alert', '<div class="alert alert-danger"><strong>Tidak dapa melakukan absensi pada hari Sabtu dan Minggu</strong></div>');
+                if ($today == 'Monday') {
+                    $this->session->set_flashdata('alert', '<div class="alert alert-danger"><strong>Tidak dapat melakukan absensi pada hari Minggu</strong></div>');
                     return redirect('/dashboard');
                 } else {
                     $config['upload_path'] = './public/images/';
@@ -38,8 +38,6 @@ class Absensi extends CI_Controller
                             $nama_file = $this->upload->data();
                             $token = [
                                 'id_pegawai' => $id,
-                                'latidude' => '-',
-                                'longitude' => '-',
                                 'gambar_in' => $nama_file['file_name'],
                                 'jam_masuk' => '-',
                                 'tgl_presensi' => $now,

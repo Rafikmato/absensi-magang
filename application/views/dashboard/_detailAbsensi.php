@@ -21,23 +21,6 @@
                     <?php if($data->num_rows() > 0){ ?>
                         <?php $get = $data->row_array() ?>
                         <div class="row">
-                            <?php if($this->session->userdata('role') == 1){ ?>
-                            <!-- <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-map"></i>
-                                        Map Lokasi Absensi
-                                    </div>
-                                    <div class="card-body">
-                                        <input type="text" hidden value="<?= $get["longitude"] ?>" class="longitude">
-                                        <input type="text" hidden value="<?= $get["latidude"] ?>" class="latidude">
-                                        <div id="maping">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <?php } ?>
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
@@ -87,7 +70,7 @@
                                             </div>
                                             <?php if($this->session->userdata('role') == '1'){ ?>
                                                 <div class="card-footer d-flex justify-content-center">
-                                                    <a href="<?php base_url('hapus-presensi/'.$rows->id_karyawan) ?>" class="btn btn-danger">Hapus</a>
+                                                    <a href="<?php base_url() ?>" class="btn btn-danger">Hapus</a> <!--blm jadi -->
                                                 </div>
                                             <?php } ?>
                                         </div>

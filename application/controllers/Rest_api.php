@@ -137,11 +137,11 @@ class Rest_api extends CI_Controller {
         $query = $this->db->query("SELECT jam_masuk,jam_keluar,id_presensi,DATE_FORMAT(tgl_presensi,'%d %m %y') AS tl FROM presensi WHERE id_pegawai = '$id' AND tgl_presensi = '$now'");
         $data_query = $query->row_array();
         $today = date('l');
-        if($today == 'Sunday' || $today == 'Saturday')
+        if($today == 'Sunday')
         {
             $response = [
                 'status' => 'error',
-                'desc' => 'Tidak dapat melakukan absensi pada hari sabtu dan minggu'
+                'desc' => 'Tidak dapat melakukan absensi pada hari minggu'
             ];
             echo json_encode($response);
         }else{
