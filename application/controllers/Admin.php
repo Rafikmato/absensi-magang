@@ -140,4 +140,13 @@ class Admin extends CI_Controller
         return redirect('daftar-admin');
     }
 
+    public function edit_keterangan($id) {
+        $keterangan = $this->input->post("keterangan");
+        $this->db->where("id_presensi", $id);
+        $this->db->update('presensi',[
+            'keterangan' => $keterangan,
+        ]);
+        return redirect('detail-absensi/'.$id);
+    }
+
 }

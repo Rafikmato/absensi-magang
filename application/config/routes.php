@@ -17,7 +17,7 @@ $route['pengaturan-absensi'] = 'Admin/pengaturan';
 $route['detail-karyawan/(:any)'] = 'Karyawan/detail/$1';
 $route['detail-admin/(:any)'] = 'Admin/detail/$1';
 $route['hapus-admin/(:any)'] = 'Admin/delete_admin/$1';
-$route['hapus-presensi/(:any)'] = 'Admin/delete_prensensi/$1';
+$route['edit-keterangan/(:any)'] = 'Admin/edit_keterangan/$1';
 
 
 $route['hapus-jabatan/(:any)'] = 'Karyawan/delete/$1';

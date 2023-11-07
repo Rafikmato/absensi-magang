@@ -70,7 +70,16 @@
                                             </div>
                                             <?php if($this->session->userdata('role') == '1'){ ?>
                                                 <div class="card-footer d-flex justify-content-center">
-                                                    <a href="<?php base_url() ?>" class="btn btn-danger">Hapus</a> <!--blm jadi -->
+                                                    <div class="form-group mt-3">
+                                                        <form method="POST" action="<?= base_url('edit-keterangan/'. $get['id_presensi']) ?>" class="d-flex">
+                                                            <select name="keterangan" required class="form-control mr-2">
+                                                                <option value="">-- Pilih Keterangan  --</option>
+                                                                <option value="alpa">Alpa</option>
+                                                                <option value="hadir">Hadir</option>
+                                                            </select>
+                                                            <button type="submit" class="btn btn-success">Edit</button>
+                                                        </form>
+                                                    </div>  
                                                 </div>
                                             <?php } ?>
                                         </div>
