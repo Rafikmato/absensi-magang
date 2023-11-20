@@ -40,11 +40,11 @@ class M_auth extends CI_Model
                 return redirect('/dashboard');
             }else{
                 $this->session->set_flashdata('alert','<div class="alert alert-danger">Maaf username anda telah di nonaktifkan !</div>');
-                return redirect('/');
+                return redirect('login');
             }
         }else{
             $this->session->set_flashdata('alert','<div class="alert alert-danger">Maaf username atau password anda salah</div>');
-            return redirect('/');
+            return redirect('login');
         }
     }
     public function auth_operator($password,$use)
@@ -72,7 +72,7 @@ class M_auth extends CI_Model
             return redirect('/dashboard');
         }else{
             $this->session->set_flashdata('alert','<div class="alert alert-danger">Maaf username atau password anda salah</div>');
-            return redirect('/');
+            return redirect('login');
         }
     }
 

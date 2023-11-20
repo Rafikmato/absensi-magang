@@ -16,11 +16,12 @@
     <style>
         body{
             font-family: 'Quicksand', sans-serif;
-            back
+            background: lightgray;
+
         }
     </style>
 </head>
-<body style="background-color: lightgray;">
+<body>
     <div class="container mb-4">
         <div class="row justify-content-center" style="margin-top: 30px;">
             <div class="col-md-5">
@@ -41,9 +42,9 @@
                                     Pengguna
                                 </label>
                                 <select name="role" class="form-control" id="" required>
-                                    <option value="">-- Pilih Pengguna --</option>
-                                    <option value="1">Administrator</option>
+                                    <!-- <option value="">-- Pilih Pengguna --</option> -->
                                     <option value="2">Pegawai</option>
+                                    <option value="1">Administrator</option>
                                 </select>
                             </div>
                             <div class="form-group">

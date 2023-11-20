@@ -184,7 +184,7 @@ class Rest_api extends CI_Controller {
                             'gambar_in' => $name_file,
                             'jam_masuk' => Rest_api::waktu_now(),
                             'tgl_presensi' => $now,
-                            'keterangan' => 'terlambat',
+                            'keterangan' => 'Terlambat',
                         ];
                         $this->db->insert('presensi',$token);
                         $response = [

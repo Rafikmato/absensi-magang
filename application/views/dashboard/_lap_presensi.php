@@ -40,9 +40,9 @@
                         );
                         $now = date('Y');
                         ?>
-                        <form action="<?= site_url('Laporan/rekap') ?>" method="post">
-                            <div class="row mt-3 mb-3">
-                                <div class="col-md-2 col-4">
+                        <div class="d-flex w-100 mb-4">
+                            <form class="d-flex" action="<?= site_url('Laporan/rekap') ?>" method="post">
+                                <div class="mr-2">
                                     <select name="bulan" class="form-control">
                                         <option value=""> -- Pilih Bulan --</option>
                                         <?php $jumlah = count($name_bulan); ?>
@@ -52,19 +52,19 @@
                                         <option value="all">All</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2 col-4">
+                                <div class="mr-2">
                                     <select name="tahun" class="form-control">
                                         <option value="">-- Pilih Tahun --</option>
-                                        <?php for($y = 2015;$y <= $now;$y++){ ?>
+                                        <?php for($y = 2022;$y <= $now;$y++){ ?>
                                             <option value="<?php echo $y ?>"><?php echo $y ?></option>    
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-md-2 col-4">
-                                    <button class="btn btn-outline-success" type="submit" name="rekap">Rekap</button>
-                                </div>
-                            </div>
-                        </form>
+                                <button class="btn btn-outline-success" type="submit" name="rekap">Rekap</button>
+                            </form>
+                            <!-- <button><a href="<?= base_url('export')?>">simpan</a></button> -->
+                            <!-- <button href="<?= base_url('export') ?>" class="ml-2 btn btn-outline-warning" type="button">Export Excel</button> -->
+                        </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-header">

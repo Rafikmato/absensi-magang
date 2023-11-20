@@ -17,6 +17,9 @@ $date = strftime('%d %B %Y');
     <link href="<?= base_url('public/css/custom.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('public/toast/jquery.toast.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('public/leaflet/leaflet.css') ?>" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
     <title>Laporan</title>
 </head>
 <style>
@@ -41,7 +44,7 @@ $date = strftime('%d %B %Y');
                 <h6 class="text-center"><strong>RUMAH SAKIT UMUM DAERAH PROF. DR. H. ALOEI SABOE</strong></h6>
                 <p class="text-center">Jl. Prof. Dr. H. Aloei Saboe No.92 (0435) 822753  Fax (0435) 822150</p>    
                 <div class="line"></div>
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>Nama</th>
@@ -81,8 +84,16 @@ $date = strftime('%d %B %Y');
     <script src="<?= base_url('public/js/scripts.js') ?>"></script>
     <script src="<?= base_url('public/DataTables/datatables.min.js') ?>"></script>
     <script src="<?= base_url('public/toast/jquery.toast.min.js') ?>"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script>
-        window.print();
+        // window.print();
     </script>
     <script>
         function tanggalIndonesia(tanggal) {
@@ -116,5 +127,20 @@ $date = strftime('%d %B %Y');
                 element.textContent = tanggalIndonesia(element.textContent);
             });
     </script>
+    <script>
+    // $(document).ready(function(){
+    //     $('#datatablesSimple').DataTable();
+    // });
+
+    $(document).ready(function() {
+    $('#datatablesSimple').DataTable( {
+        paging: false,
+        dom: 'Bfrtip',
+        button: [
+            'excelHtml5'
+        ]
+    } );
+} );
+</script>
 </body>
 </html>

@@ -1,14 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$route['default_controller'] = 'Login';
+$route['default_controller'] = 'Daftar';
 $route['dashboard'] = 'Dashboard';
 $route['riwayat'] = 'Riwayat/my_riwayat';
 $route['laporan-absensi'] = 'Riwayat/laporan_riwayat';
 $route['detail-laporan/(:any)'] = 'Riwayat/detail/$1';
 $route['pesan'] = 'Pesan';
-$route['pesan-masuk'] = 'Pesan/list_inbox';
-$route['detail-pesan/(:any)'] = 'Pesan/detail/$1';
-$route['detail-message/(:any)'] = 'Pesan/admin_message/$1';
+$route['pesan-masuk'] = 'Pesan/list_inbox'; 
 $route['daftar-karyawan'] = 'Karyawan';
 $route['daftar-admin'] = 'Admin';
 $route['management-jabatan'] = 'Karyawan/jabatan';
@@ -18,7 +16,8 @@ $route['detail-karyawan/(:any)'] = 'Karyawan/detail/$1';
 $route['detail-admin/(:any)'] = 'Admin/detail/$1';
 $route['hapus-admin/(:any)'] = 'Admin/delete_admin/$1';
 $route['edit-keterangan/(:any)'] = 'Admin/edit_keterangan/$1';
-
+$route['export'] = 'Laporan/excel';
+$route['daftar-absen'] = 'daftar_absen/$1';
 
 $route['hapus-jabatan/(:any)'] = 'Karyawan/delete/$1';
 $route['hapus-karyawan/(:any)'] = 'Karyawan/deleteKaryawan/$1';
