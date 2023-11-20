@@ -103,12 +103,24 @@
                             <tbody>
                                 <?php foreach ($rafik as $r) { ?>
                                     <tr>
-                                        <td><?= $no += 0 ?></td>
+                                        <td><?= $no++ ?></td>
                                         <td><?= $r['username'] ?></td>
                                         <td><?= $r['jam_masuk'] ?></td>
                                         <td><?= $r['jam_keluar'] ?></td>
                                         <td><?= $r['ket_jabatan'] ?></td>
-                                        <td><?= $r['keterangan'] ?></td>
+                                        <td style="color: <?php
+                                            switch ($r['keterangan']) {
+                                                case 'Alpa':
+                                                    echo 'red';
+                                                    break;
+                                                case 'Terlambat':
+                                                    echo 'orange';
+                                                    break;
+                                                default:
+                                                    echo 'green';
+                                                    break;
+                                            }
+                                        ?>;"><?= $r['keterangan'] ?></td>  
                                     </tr>
                                 <?php } ?>
                             </tbody>

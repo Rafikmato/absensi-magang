@@ -164,7 +164,7 @@ class Rest_api extends CI_Controller {
                         'gambar_in' => $name_file,
                         'jam_masuk' => Rest_api::waktu_now(),
                         'tgl_presensi' => $now,
-                        'keterangan' => 'alpa',
+                        'keterangan' => 'Alpa',
                     ];
                     $this->db->insert('presensi',$token);
                     $response = [
@@ -210,7 +210,7 @@ class Rest_api extends CI_Controller {
                                 'gambar_in' => $name_file,
                                 'jam_masuk' => Rest_api::waktu_now(),
                                 'tgl_presensi' => $now,
-                                'keterangan' => 'hadir',
+                                'keterangan' => 'Hadir',
                             ];
                             $this->db->insert('presensi',$token);
                             $response = [

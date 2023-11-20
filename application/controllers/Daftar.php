@@ -5,6 +5,8 @@ class Daftar extends CI_Controller
 {
     public function index()
     {   
+        // include(APPATH. 'Rest_api' );
+
         $this->db->select('*');
         $this->db->from('presensi');
         $this->db->join('karyawan', 'presensi.id_pegawai = karyawan.id_karyawan');
@@ -13,6 +15,8 @@ class Daftar extends CI_Controller
         $data['rafik'] = $this->db->get()->result_array();
         $this->load->view('daftar_absen',$data);
         return;
+
+
     }
     
 }
