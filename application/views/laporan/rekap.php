@@ -73,6 +73,7 @@ $date = strftime('%d %B %Y');
                     <h6>Gorontalo, <?= date('d F Y') ?></h6>
                     <h6>Mengetahui</h6>
                     <br><br><br>
+                    
                     <h6>Admin <br>
                     <?php echo $this->session->userdata('user_name') ?></h6>
                 </div>

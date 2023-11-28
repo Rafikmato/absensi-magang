@@ -17,7 +17,17 @@
         body{
             font-family: 'Quicksand', sans-serif;
             background: lightgray;
-
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+        a.btn {
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -37,16 +47,16 @@
                             <h5 class="text-center">ABSENSI MAHASISWA MAGANG</h5>
                             <h5 class="text-center">RSUD Prof. H. dr. Aloei Saboe</h5>
                             <hr>
-                            <div class="form-group">
-                                <label for="choose">
-                                    Pengguna
-                                </label>
-                                <select name="role" class="form-control" id="" required>
-                                    <!-- <option value="">-- Pilih Pengguna --</option> -->
-                                    <option value="2">Pegawai</option>
-                                    <option value="1">Administrator</option>
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="choose">
+                                        Pengguna
+                                    </label>
+                                    <select name="role" class="form-control" id="" required>
+                                        <!-- <option value="">-- Pilih Pengguna --</option> -->
+                                        <option value="2">Pegawai</option>
+                                        <option value="1">Administrator</option>
+                                    </select>
+                                </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" required id="email" name="email" class="form-control" placeholder="Enter email">
@@ -55,8 +65,11 @@
                                 <label for="password">Password</label>
                                 <input type="password" required id="password" name="password" class="form-control" placeholder="Enter Password">
                             </div>
-                            <button class="btn btn-success text-light w-100">Masuk</button>
-                            <br>
+                            <div class="btn-container">
+                                <button class="btn btn-success text-light w-100">Masuk</button><br><br>
+                                <a href="<?= base_url('Daftar') ?>" class="btn btn-danger text-light w-100">Kembali</a>
+                                <br>
+                            </div>
                             <!--<p class="mt-3">Belum Punya Account ? <a href="design-register-yuni.html">Daftar Disini</a></p>-->
                         </div>
                     </div>

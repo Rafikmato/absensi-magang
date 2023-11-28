@@ -141,11 +141,28 @@ class Admin extends CI_Controller
     }
 
     public function edit_keterangan($id) {
+        $before = $this->db->query("SELECT keterangan from presensi where id_presensi = $id")->result_array();
         $keterangan = $this->input->post("keterangan");
         $this->db->where("id_presensi", $id);
         $this->db->update('presensi',[
             'keterangan' => $keterangan,
         ]);
+        $data = [
+            "id_presensi" => $id,
+            "id_pegawai" => $this->session->userdata('id'),
+            "when" => date('Y-m-d'),
+            "before" => $before[0]["keterangan"],
+            "after" => $keterangan
+        ];
+        
+        $this->db->insert('update_presensi',[
+            'id_presensi' => $data['id_presensi'],
+            'id_pegawai' => $data['id_pegawai'],
+            'when' => $data['when'],
+            'before' => $data['before'],
+            'after' => $data['after']
+        ]);
+
         return redirect('detail-absensi/'.$id);
     }
 

@@ -39,6 +39,10 @@
     a {
         text-decoration: none;
     }
+
+    .date {
+      float: left;
+    }
 </style>
 
 <body>
@@ -75,6 +79,7 @@
 
   <?php
     $no = 1;
+    date_default_timezone_set('Asia/Makassar');
   ?>
 
   <!-- ======= Hero Section ======= -->
@@ -82,21 +87,39 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                   Daftar Nama Mahasiswa
+          <div class="card">
+            <div class="card-header">
+              Daftar Nama Mahasiswa
+            </div>
+            <div class="card-body">
+              <form action="<?= base_url('Daftar/filter') ?>" method="POST">
+                <input type="text" hidden name="" value="">
+                <div class="row mt-1">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <select name="f-absen" class="form-control">
+                              <option value="0">-- Hari Ini --</option>
+                              <option value="1">Kemarin</option>
+                              <option value="2">3 Hari Terakhir</option>
+                              <option value="3">1 Minggu Terakhir</option>
+                              <option value="4">1 Bulan Terakhir</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-outline-success" name="filter" type="submit">Cari</button>
+                    </div>
                 </div>
-                <div class="card-body">
+            </form>
                     <div class="table-responsive">
                         <table id="example" class="table-light table-bordered" style="width: 100%; ">
                             <thead>
                                 <tr>
-                                    
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Jam Masuk</th>
                                     <th>Jam Keluar</th>
-                                    <th>Jabatan</th>
+                                    <th>Tanggal Presensi</th>
                                     <th>Keterangan</th>
                                 </tr>
                             </thead>
@@ -107,7 +130,7 @@
                                         <td><?= $r['username'] ?></td>
                                         <td><?= $r['jam_masuk'] ?></td>
                                         <td><?= $r['jam_keluar'] ?></td>
-                                        <td><?= $r['ket_jabatan'] ?></td>
+                                        <td><?= $r['tgl_presensi'] ?></td>
                                         <td style="color: <?php
                                             switch ($r['keterangan']) {
                                                 case 'Alpa':
@@ -154,6 +177,7 @@
 
 <script>
     new DataTable('#example');
+    
+    
 </script>
-
 </html>

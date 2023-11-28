@@ -79,8 +79,8 @@
                                 <div class="text-danger nik"></div>
                             </div>
                             <div class="form-group">
-                                <label for="">Nama</label>
-                                <input type="text" name="nama" required placeholder="Nama" class="nama form-control">
+                                <label for="">Nama Lengkap</label>
+                                <input type="text" name="nama" required placeholder="Nama Lengkap" class="nama form-control">
                                 <div class="text-danger nama"></div>
                             </div>
                             <div class="form-group">

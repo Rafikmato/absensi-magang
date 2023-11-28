@@ -101,6 +101,8 @@
                                         <th>Jam Keluar</th>
                                         <th>Tanggal Absensi</th>
                                         <th>Keterangan</th>
+                                        <th>Status</th>
+                                        <th>Waktu Diubah</th>
                                         <th>Detail</th>
                                     </tr>
                                 </thead>
@@ -119,6 +121,8 @@
                                             </td>
                                             <td><?= $rows->tgl ?></td>
                                             <td><?= $rows->keterangan ?></td>
+                                            <td></td>
+                                            <td></td>
                                             <td><a href="<?= base_url('detail-absensi/' . $rows->id_presensi) ?>" class="btn btn-info">Lihat</a></td>
                                         </tr>
                                     <?php } ?>
