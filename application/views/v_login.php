@@ -47,16 +47,6 @@
                             <h5 class="text-center">ABSENSI MAHASISWA MAGANG</h5>
                             <h5 class="text-center">RSUD Prof. H. dr. Aloei Saboe</h5>
                             <hr>
-                                <div class="form-group">
-                                    <label for="choose">
-                                        Pengguna
-                                    </label>
-                                    <select name="role" class="form-control" id="" required>
-                                        <!-- <option value="">-- Pilih Pengguna --</option> -->
-                                        <option value="2">Pegawai</option>
-                                        <option value="1">Administrator</option>
-                                    </select>
-                                </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" required id="email" name="email" class="form-control" placeholder="Enter email">

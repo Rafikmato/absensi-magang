@@ -23,13 +23,7 @@ class Login extends CI_Controller {
 	{
 		$username = $this->input->post('email');
 		$password = $this->input->post('password');
-		$role = $this->input->post('role');
-		if($role == 1)
-		{
-			$this->M_auth->auth_operator($password,$username);
-		}else{
-			$this->M_auth->auth($password,$username);
-		}
+		$this->M_auth->auth($password,$username);
 	}
 
 	public function log_out()

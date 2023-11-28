@@ -103,6 +103,7 @@
                                         <th>Keterangan</th>
                                         <th>Status</th>
                                         <th>Waktu Diubah</th>
+                                        <th>Diubah Oleh</th>
                                         <th>Detail</th>
                                     </tr>
                                 </thead>
@@ -120,9 +121,32 @@
                                                 <?php } ?>
                                             </td>
                                             <td><?= $rows->tgl ?></td>
-                                            <td><?= $rows->keterangan ?></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?= $rows->keterangan?></td>
+                                            <td>
+                                                <?php if ($rows->status == NULL || 0) { ?>
+                                                    <span class="badge badge-primary">Idle</span>
+                                                <?php } else if ($rows->status == 1) {?>
+                                                    <span class="badge badge-warning">Pending</span>
+                                                <?php } else if ($rows->status == 2) {?>
+                                                    <span class="badge badge-success">Approved</span>
+                                                <?php } else if ($rows->status == 3) {?>
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                <?php } ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($rows->waktu_diubah == NULL) { ?>
+                                                    <span class="badge badge-primary">Idle</span>
+                                                <?php } else { ?>
+                                                    <span class="badge badge-success"><?= $rows->waktu_diubah ?></span>
+                                                <?php } ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($rows->diubah_oleh == '') { ?>
+                                                    <span class="badge badge-primary">Idle</span>
+                                                <?php } else { ?>
+                                                    <span class="badge badge-success"><?= $rows->diubah_oleh ?></span>
+                                                <?php } ?>
+                                            </td>
                                             <td><a href="<?= base_url('detail-absensi/' . $rows->id_presensi) ?>" class="btn btn-info">Lihat</a></td>
                                         </tr>
                                     <?php } ?>

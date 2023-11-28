@@ -14,7 +14,12 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                     Data Diri
                 </a> -->
-                <?php if($this->session->userdata('role') == 1 && 2){ ?>
+                <?php if($this->session->userdata('role') == 2){ ?>
+                    <a class="nav-link" href="<?= base_url('riwayat') ?>">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Riwayat Absensi
+                    </a>
+                <?php }else{ ?>    
                     <a class="nav-link" href="<?= base_url('laporan-absensi') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Laporan Absensi
@@ -27,29 +32,14 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Kelola Jabatan
                     </a>
-                <?php }else{ ?>    
-                    <a class="nav-link" href="<?= base_url('riwayat') ?>">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Riwayat Absensi
-                    </a>
                 <?php } ?>
-
-                <?php if($this->session->userdata('id_jabatan') == 3){ ?>
+                
+                <?php if($this->session->userdata('role') == 1){ ?>
                     <a class="nav-link" href="<?= base_url('daftar-karyawan') ?>">
                         <div class="sb-nav-link-icon"><i class="fa fa-address-card"></i></div>
                         Daftar Pegawai
                     </a>
-                    <a class="nav-link" href="<?= base_url('laporan-presensi') ?>">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Laporan Absensi
-                    </a>
-                    <a class="nav-link" href="<?= base_url('management-jabatan') ?>">
-                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                        Management Jabatan
-                    </a>
-                <?php } ?>
-                
-                <?php if($this->session->userdata('role') == 1 && 2){ ?>
+                <?php }elseif ($this->session->userdata('role') == 3) {?>
                     <a class="nav-link" href="<?= base_url('daftar-karyawan') ?>">
                         <div class="sb-nav-link-icon"><i class="fa fa-address-card"></i></div>
                         Daftar Pegawai

@@ -77,7 +77,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nik</th>
-                                        <?php if ($this->session->userdata('role') == 1 && 2) { ?>
+                                        <?php if ($this->session->userdata('role') == 1 || 3) { ?>
                                             <th>Nama</th>
                                         <?php } ?>
                                         <th>Jabatan</th>
@@ -92,7 +92,7 @@
                                             <td><?= $rows->nik ?></td>
                                             <td><?= $rows->username ?></td>
                                             <td><?= $rows->ket_jabatan ?></td>
-                                            <td><a href="<?= base_url('detail-laporan/' . $rows->id_karyawan) ?>" class="btn btn-info">Lihat</a></td>
+                                            <td><a href="<?= base_url('detail-laporan/' . $rows->id_user) ?>" class="btn btn-info">Lihat</a></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

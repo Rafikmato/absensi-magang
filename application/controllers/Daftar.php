@@ -18,8 +18,8 @@ class Daftar extends CI_Controller
 
         $this->db->select('*');
         $this->db->from('presensi');
-        $this->db->join('karyawan', 'presensi.id_pegawai = karyawan.id_karyawan');
-        $this->db->join('jabatan', 'jabatan.id_jabatan = karyawan.id_jabatan');
+        $this->db->join('users', 'presensi.id_pegawai = users.id_user');
+        $this->db->join('jabatan', 'jabatan.id_jabatan = users.id_jabatan');
         $this->db->where('presensi.tgl_presensi', 'CURDATE()', FALSE);
         $data['rafik'] = $this->db->get()->result_array();
         $this->load->view('daftar_absen',$data);
@@ -50,8 +50,8 @@ class Daftar extends CI_Controller
             // Req Data
             $this->db->select('*');
             $this->db->from('presensi');
-            $this->db->join('karyawan', 'presensi.id_pegawai = karyawan.id_karyawan');
-            $this->db->join('jabatan', 'jabatan.id_jabatan = karyawan.id_jabatan');
+            $this->db->join('users', 'presensi.id_pegawai = users.id_user');
+            $this->db->join('jabatan', 'jabatan.id_jabatan = users.id_jabatan');
             $this->db->order_by('tgl_presensi', 'DESC');
 
             if ($filter == '0') {

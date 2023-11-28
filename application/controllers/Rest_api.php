@@ -166,6 +166,9 @@ class Rest_api extends CI_Controller {
                         'jam_masuk' => Rest_api::waktu_now(),
                         'tgl_presensi' => $now,
                         'keterangan' => 'Alpa',
+                        'status' => NULL,
+                        'waktu_diubah' => NULL,
+                        'diubah_oleh' => '',
                     ];
                     $this->db->insert('presensi',$token);
                     $response = [

@@ -48,8 +48,8 @@
                                         <td><?= $rows->lingkup ?></td>
                                        
                                         <td>
-                                        <a href="<?= base_url('detail-karyawan/'.$rows->id_karyawan) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                        <a href="<?= base_url('hapus-karyawan/'.$rows->id_karyawan) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="<?= base_url('detail-karyawan/'.$rows->id_user) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('hapus-karyawan/'.$rows->id_user) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     <?php } ?>

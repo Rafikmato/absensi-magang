@@ -14,7 +14,7 @@ class Riwayat extends CI_Controller
     }
     public function laporan_riwayat()
     {
-        $query = $this->db->query("SELECT * FROM karyawan JOIN jabatan ON karyawan.id_jabatan = jabatan.id_jabatan")->result();
+        $query = $this->db->query("SELECT * FROM users JOIN jabatan ON users.id_jabatan = jabatan.id_jabatan")->result();
         return $this->load->view('dashboard/_lap_presensi',[
             'data' => $query
         ]);
@@ -63,11 +63,11 @@ class Riwayat extends CI_Controller
                 }
             }
         }else{
-            $query = $this->db->query("SELECT keterangan,id_pegawai,id_presensi,jam_masuk,jam_keluar,
+            $query = $this->db->query("SELECT keterangan,id_pegawai,id_presensi,jam_masuk,jam_keluar,presensi.status,waktu_diubah,diubah_oleh,
             DATE_FORMAT(tgl_presensi,'%d-%M-%Y') 
             AS tgl 
             FROM presensi 
-            JOIN karyawan ON id_pegawai = id_karyawan WHERE id_pegawai = '$id'");
+            JOIN users ON id_pegawai = id_user WHERE id_pegawai = '$id'");
             if($query->num_rows() > 0)
             {   
                 return $this->load->view('dashboard/_detail',[
@@ -116,7 +116,7 @@ class Riwayat extends CI_Controller
         DATE_FORMAT(tgl_presensi,'%d-%M-%Y') 
         AS tgl 
         FROM presensi 
-        JOIN karyawan ON id_pegawai = id_karyawan")->result();
+        JOIN users ON id_pegawai = id_user")->result();
         if(isset($_POST['filter']))
         {
             $tahun = $this->input->post('tahun');
@@ -143,7 +143,7 @@ class Riwayat extends CI_Controller
     public function detail_absensi($id)
     {
         //$data = $this->db->get_where('presensi',['id_presensi' => $id]);
-        $data = $this->db->query("SELECT * FROM presensi JOIN karyawan ON id_pegawai = id_karyawan WHERE id_presensi = '$id'");
+        $data = $this->db->query("SELECT * FROM presensi JOIN users ON id_pegawai = id_user WHERE id_presensi = '$id'");
         $this->load->view('dashboard/_detailAbsensi',[
             'data' => $data
         ]);

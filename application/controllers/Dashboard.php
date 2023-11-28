@@ -14,6 +14,8 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('dashboard/_dashboard');
+        $query = $this->db->query('SELECT * FROM users WHERE role = 2');
+        $data['utock'] = $query->num_rows();
+		$this->load->view('dashboard/_dashboard', $data);
 	}
 }

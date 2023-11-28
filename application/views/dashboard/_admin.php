@@ -31,7 +31,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <?php if($this->session->userdata('role') == 1 && 2){ ?>
+                                        <?php if($this->session->userdata('role') == 1 || 3){ ?>
                                         <th>Nama</th>
                                         <?php } ?>
                                         <th>Aksi</th>

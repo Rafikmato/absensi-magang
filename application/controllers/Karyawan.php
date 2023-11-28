@@ -12,9 +12,10 @@ class Karyawan extends CI_Controller
             redirect('/');
         }
     }
+    
     public function index()
     {
-        $query = $this->db->get('karyawan')->result();
+        $query = $this->db->where('role', 2)->get('users')->result();
         $jabatan = $this->db->get("jabatan");
         return $this->load->view('dashboard/_karyawan',[
             'data' => $query,
@@ -56,14 +57,14 @@ class Karyawan extends CI_Controller
     
     public function deleteKaryawan($id)
     {
-        $this->db->where('id_karyawan',$id);
-        $this->db->delete("karyawan");
+        $this->db->where('id_user',$id);
+        $this->db->delete("users");
         $this->session->set_flashdata('alert','<div class="alert alert-info">Data Karyawan telah di hapus !</div>');
         return redirect('daftar-karyawan');
     }
     public function detail($id)
     {
-        $query = $this->db->get_where('karyawan',['id_karyawan' => $id]);
+        $query = $this->db->get_where('users',['id_user' => $id]);
         $jabatan = $this->db->get("jabatan")->result();
         return $this->load->view('dashboard/_detailKaryawan',[
             'data' => $query,
@@ -141,7 +142,7 @@ class Karyawan extends CI_Controller
         if(isset($_POST["update"]))
         {
             $id = $this->input->post("id");
-            $this->db->where("id_karyawan",$id);
+            $this->db->where("id_user",$id);
             $this->db->update("karyawan",[
                 'username' => $_POST["username"],
                 'email' => $_POST["email"],
@@ -166,7 +167,7 @@ class Karyawan extends CI_Controller
         if(isset($_POST["reset_password"]))
         {
             $id = $this->input->post("id");
-            $this->db->where("id_karyawan",$id);
+            $this->db->where("id_user",$id);
             $this->db->update("karyawan",[
                 'password' => md5('123')
             ]);
